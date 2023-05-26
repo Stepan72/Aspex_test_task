@@ -12,12 +12,13 @@ function Navbar() {
     <nav className="flex flex-row justify-between width-[100%] min-height-[500px] bg-[rgba(100,50,20,1)] px-[10px] py-[10px]">
       <button className="flex gap-[10px] items-center text-white">
         <FaBars />
-        <p>Личный кабинет</p>
+        {isLogged && <Link href="/profile">Личный кабинет</Link>}
       </button>
       <div className="flex gap-[10px] items-center text-white">
         {isLogged && <p>user_name</p>}
         {!isLogged && <Link href="/auth">Log In</Link>}
         <FaUser />
+        <Link href="/">Back Home</Link>
       </div>
     </nav>
   );

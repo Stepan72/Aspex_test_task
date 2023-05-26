@@ -29,7 +29,7 @@ function DayBooking() {
         year: value.getFullYear(),
       })
     );
-    router.push("/timebooking");
+    router.replace("/timebooking");
   }
 
   return (

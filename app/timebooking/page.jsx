@@ -16,9 +16,9 @@ function TimeBooking() {
   const dispatch = useDispatch();
 
   function timePickHandler() {
-    router.push("/personbooking");
-    console.log(value);
-    dispatch(cabinetActions.timeFun(value));
+      dispatch(cabinetActions.timeFun(value));
+    router.replace("/personbooking");
+    // console.log(value);
   }
 
   return (
