@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import Link from "next/link";
+import Form from "@/components/Form";
 import { useSelector, useDispatch } from "react-redux";
 import { cabinetActions } from "@/store/cabinet-slice";
 import { useRouter } from "next/navigation";
@@ -12,6 +12,10 @@ function Auth() {
   const isLogged = useSelector((state) => state.cabinet.isLogged);
 
   function loginHandler() {
+    /// сверка данных введенного юзера и базы
+    /// если все ок - переход на главную, нет - ошибка юзера и переотправка на повторный логин
+
+    /// когда ок - переход на главную
     dispatch(cabinetActions.loginFun());
     console.log(isLogged);
     router.push("/");
@@ -19,25 +23,13 @@ function Auth() {
 
   console.log(isLogged);
   return (
-    <div>
-      Auth
-      <form>
-        <div>
-          <label htmlFor="name"></label>
-          <input type="text" />
-        </div>
-        <div>
-          <label htmlFor="password"></label>
-          <input type="password" />
-        </div>
-        <div>
-          <label htmlFor="telephone"></label>
-          <input type="text" />
-        </div>
-        <button type="button" onClick={loginHandler}>
-          Login
-        </button>
-      </form>
+    <div className="flex flex-col justify-center items-center text-center">
+      <Form
+        linkText="Sign Up"
+        buttonText="Log"
+        buttonAction={loginHandler}
+        linkPath="register"
+      />
     </div>
   );
 }

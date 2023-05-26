@@ -21,8 +21,11 @@ function Home() {
 
   return (
     <div>
-      Home
-      <DateTimePicker onChange={onChange} value={value} />
+      <div className="flex flex-col">
+        <h2>Забронируй стол для себя</h2>
+
+        <DateTimePicker onChange={onChange} value={value} />
+      </div>
     </div>
   );
 }
