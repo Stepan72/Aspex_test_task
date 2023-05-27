@@ -2,18 +2,19 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { cabinetActions } from "@/store/cabinet-slice";
-import { ServerInsertedHTMLContext } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 function Profile() {
   const bookedTables = useSelector((state) => state.cabinet.bookedTables);
   const dispatch = useDispatch();
+  const router = useRouter();
 
   function deleteHandler(id) {
     console.log(id);
     dispatch(cabinetActions.deleteTableFun(id));
   }
 
-  console.log(bookedTables);
+  //   console.log(bookedTables);
 
   return (
     <div>

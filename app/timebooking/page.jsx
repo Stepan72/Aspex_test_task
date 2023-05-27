@@ -1,7 +1,5 @@
 "use client";
-
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import "react-time-picker/dist/TimePicker.css";
@@ -12,11 +10,11 @@ import { cabinetActions } from "@/store/cabinet-slice";
 
 function TimeBooking() {
   const router = useRouter();
-  const [value, onChange] = useState("13:00");
   const dispatch = useDispatch();
+  const [value, onChange] = useState("13:00");
 
   function timePickHandler() {
-      dispatch(cabinetActions.timeFun(value));
+    dispatch(cabinetActions.timeFun(value));
     router.replace("/personbooking");
     // console.log(value);
   }
@@ -43,7 +41,3 @@ function TimeBooking() {
 }
 
 export default TimeBooking;
-
-{
-  /* <DateTimePicker onChange={onChange} value={value} /> */
-}

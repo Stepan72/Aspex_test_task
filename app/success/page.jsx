@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 function Success() {
   const bookedTables = useSelector((state) => state.cabinet.bookedTables);

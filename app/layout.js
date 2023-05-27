@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import "./styles/globals.css";
 import ProviderWrap from "./../store/ProviderWrap";
+import LoginWrapper from "@/components/LoginWrapper";
 
 export const metadata = {
   title: "ResBooking",
@@ -15,8 +16,10 @@ export default function RootLayout({ children }) {
       </head>
       <body>
         <ProviderWrap>
-          <Navbar />
-          <main>{children} </main>
+          <LoginWrapper>
+            <Navbar />
+            <main>{children} </main>
+          </LoginWrapper>
         </ProviderWrap>
       </body>
     </html>

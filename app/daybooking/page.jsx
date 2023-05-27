@@ -1,8 +1,6 @@
 "use client";
-
-import React from "react";
+import React, { useState } from "react";
 import Calendar from "react-calendar";
-import { useState } from "react";
 import "react-datetime-picker/dist/DateTimePicker.css";
 import "react-calendar/dist/Calendar.css";
 import "react-clock/dist/Clock.css";
@@ -12,9 +10,10 @@ import { useSelector, useDispatch } from "react-redux";
 import { cabinetActions } from "@/store/cabinet-slice";
 
 function DayBooking() {
-  const [value, onChange] = useState(new Date());
   const router = useRouter();
   const dispatch = useDispatch();
+  const [value, onChange] = useState(new Date());
+
   //   const date = useSelector((state) => state.cabinet.date);
 
   function datePickHandler() {
@@ -34,13 +33,21 @@ function DayBooking() {
 
   return (
     <div className="flex flex-col justify-center items-center text-center py-[100px]">
-      DayBooking
+      <h2 className="text-[30px] mb-[30px]">
+        Выберете желаемый день бронирования
+      </h2>
       <div>
         <Calendar onChange={onChange} value={value} />
       </div>
-      <div>
-        <Link href="/">Cancel</Link>
-        <button type="button" onClick={datePickHandler}>
+      <div className="mt-[30px] flex gap-[30px] ">
+        <Link href="/" className="cancel__button">
+          Отмена
+        </Link>
+        <button
+          type="button"
+          className="next__button"
+          onClick={datePickHandler}
+        >
           Далее
         </button>
       </div>
@@ -49,7 +56,3 @@ function DayBooking() {
 }
 
 export default DayBooking;
-
-{
-  /* <DateTimePicker onChange={onChange} value={value} /> */
-}

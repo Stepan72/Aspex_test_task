@@ -1,7 +1,5 @@
 "use client";
-
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useSelector, useDispatch } from "react-redux";
@@ -13,10 +11,12 @@ function PersonBooking() {
   const [error, setError] = useState(null);
   const router = useRouter();
   const dispatch = useDispatch();
+
   const availableTables = useSelector((state) => state.cabinet.availableTables);
 
   //   const enteredDataPrevious = useSelector((state) => state.cabinet);
   //   console.log(availableTables);
+
   function personPickHandler() {
     // console.log(enteredDataPrevious);
     // console.log(availableTables[activePin]);
@@ -66,7 +66,3 @@ function PersonBooking() {
 }
 
 export default PersonBooking;
-
-{
-  /* <DateTimePicker onChange={onChange} value={value} /> */
-}

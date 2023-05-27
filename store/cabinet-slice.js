@@ -17,6 +17,7 @@ const cabinetSlice = createSlice({
       { tableFor: "6", qty: 3 },
     ],
     bookedTables: [],
+    starWarsData: [],
   },
   reducers: {
     loginFun(state) {
@@ -72,6 +73,9 @@ const cabinetSlice = createSlice({
       restoreTable = { ...restoreTable, qty: restoreTable.qty + 1 };
       state.availableTables[deleteTableIndex] = restoreTable;
     },
+    starWarsFun(state, action) {
+        state.starWarsData = action.payload;
+    }
   },
 });
 
