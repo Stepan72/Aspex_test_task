@@ -4,6 +4,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const cabinetSlice = createSlice({
   name: "cabinet",
   initialState: {
+    start: false,
     isLogged: false,
     date: {
       day: null,
@@ -11,13 +12,8 @@ const cabinetSlice = createSlice({
       year: null,
     },
     time: null,
-    availableTables: [
-      { tableFor: "2", qty: 7 },
-      { tableFor: "3", qty: 6 },
-      { tableFor: "6", qty: 3 },
-    ],
+    availableTables: [],
     bookedTables: [],
-    starWarsData: [],
   },
   reducers: {
     loginFun(state) {
@@ -73,9 +69,12 @@ const cabinetSlice = createSlice({
       restoreTable = { ...restoreTable, qty: restoreTable.qty + 1 };
       state.availableTables[deleteTableIndex] = restoreTable;
     },
-    starWarsFun(state, action) {
-        state.starWarsData = action.payload;
-    }
+    loadDataTables(state, action) {
+      state.availableTables = action.payload;
+    },
+    startIsOver(state) {
+      state.start = true;
+    },
   },
 });
 
