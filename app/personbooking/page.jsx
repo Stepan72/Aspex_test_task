@@ -13,13 +13,11 @@ function PersonBooking() {
   const dispatch = useDispatch();
 
   const availableTables = useSelector((state) => state.cabinet.availableTables);
-
-  //   const enteredDataPrevious = useSelector((state) => state.cabinet);
-  //   console.log(availableTables);
+  const allTables = useSelector((state) => state.cabinet.allTables);
 
   function personPickHandler() {
-    // console.log(enteredDataPrevious);
     // console.log(availableTables[activePin]);
+
     if (availableTables[activePin].qty !== 0) {
       dispatch(cabinetActions.tableFun(activePin));
       console.log("success");
@@ -50,7 +48,11 @@ function PersonBooking() {
               key={index}
               className="flex width-[250px] height-[250px] mt-[10px]"
             >
-              <Table tableFor={el.tableFor} qty={el.qty} />
+              <Table
+                tableFor={el.tableFor}
+                AllQty={allTables[index].qty}
+                qty={el.qty}
+              />
             </button>
           );
         })}

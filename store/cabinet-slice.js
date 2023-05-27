@@ -12,6 +12,7 @@ const cabinetSlice = createSlice({
       year: null,
     },
     time: null,
+    allTables: [],
     availableTables: [],
     bookedTables: [],
   },
@@ -70,7 +71,8 @@ const cabinetSlice = createSlice({
       state.availableTables[deleteTableIndex] = restoreTable;
     },
     loadDataTables(state, action) {
-      state.availableTables = action.payload;
+      state.availableTables = action.payload.availableTables;
+      state.allTables = action.payload.allTables;
     },
     startIsOver(state) {
       state.start = true;

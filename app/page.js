@@ -5,17 +5,18 @@ import { useSelector, useDispatch } from "react-redux";
 import { cabinetActions } from "@/store/cabinet-slice";
 
 export default function Home() {
-  console.log("render");
+  // console.log("render");
   const start = useSelector((state) => state.cabinet.start);
   const isLogged = useSelector((state) => state.cabinet.isLogged);
   const dispatch = useDispatch();
 
+  /// Получение свободных столов с API Routes Next JS
   useEffect(() => {
     async function getData() {
-      const response = await fetch("http://localhost:3000/api/prompt");
+      const response = await fetch("http://localhost:3000/api/tables");
       // console.log(response);
       const data = await response.json();
-      // console.log(data);
+      console.log(data);
       dispatch(cabinetActions.loadDataTables(data));
       dispatch(cabinetActions.startIsOver());
     }
@@ -47,12 +48,12 @@ export default function Home() {
             Вход
           </Link>
         )}
-        <button>Data</button>
       </div>
     </div>
   );
 }
 
+////////////// EXPERIMENTAL SSR an STR
 /// рабочая на стар варс
 // async function getData() {
 //   const res = await fetch("https://swapi.dev/api/people/1");
