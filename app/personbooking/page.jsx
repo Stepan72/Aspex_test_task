@@ -7,7 +7,6 @@ import { cabinetActions } from "@/store/cabinet-slice";
 import Table from "@/components/Table";
 
 function PersonBooking() {
-  const start = useSelector((state) => state.cabinet.start);
   const [activePin, setActivePin] = useState(null);
   const [error, setError] = useState(null);
   const router = useRouter();
@@ -17,19 +16,6 @@ function PersonBooking() {
 
   //   const enteredDataPrevious = useSelector((state) => state.cabinet);
   //   console.log(availableTables);
-
-  useEffect(() => {
-    async function getData() {
-      console.log("person render");
-      const response = await fetch("http://localhost:3000/api/prompt");
-      const data = await response.json();
-      dispatch(cabinetActions.loadDataTables(data));
-      dispatch(cabinetActions.startIsOver());
-    }
-    if (!start) {
-      getData();
-    }
-  }, []);
 
   function personPickHandler() {
     // console.log(enteredDataPrevious);
@@ -81,3 +67,17 @@ function PersonBooking() {
 }
 
 export default PersonBooking;
+
+///////////////
+// useEffect(() => {
+//   async function getData() {
+//     console.log("person render");
+//     const response = await fetch("http://localhost:3000/api/prompt");
+//     const data = await response.json();
+//     dispatch(cabinetActions.loadDataTables(data));
+//     dispatch(cabinetActions.startIsOver());
+//   }
+//   if (!start) {
+//     getData();
+//   }
+// }, []);

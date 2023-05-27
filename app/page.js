@@ -1,22 +1,27 @@
 "use client";
 import React, { useCallback, useEffect, useState, use } from "react";
 import Link from "next/link";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { cabinetActions } from "@/store/cabinet-slice";
 
 export default function Home() {
   console.log("render");
+  const start = useSelector((state) => state.cabinet.start);
   const isLogged = useSelector((state) => state.cabinet.isLogged);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     async function getData() {
-      console.log("check rerenderring");
       const response = await fetch("http://localhost:3000/api/prompt");
       // console.log(response);
       const data = await response.json();
-      console.log(data);
+      // console.log(data);
+      dispatch(cabinetActions.loadDataTables(data));
+      dispatch(cabinetActions.startIsOver());
     }
-
-    getData();
+    if (!start) {
+      getData();
+    }
   }, []);
 
   return (
