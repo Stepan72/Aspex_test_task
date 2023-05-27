@@ -1,10 +1,23 @@
 "use client";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState, use } from "react";
 import Link from "next/link";
-import { use } from "react";
+import { useSelector } from "react-redux";
 
 export default function Home() {
   console.log("render");
+  const isLogged = useSelector((state) => state.cabinet.isLogged);
+
+  useEffect(() => {
+    async function getData() {
+      console.log("check rerenderring");
+      const response = await fetch("http://localhost:3000/api/prompt");
+      // console.log(response);
+      const data = await response.json();
+      console.log(data);
+    }
+
+    getData();
+  }, []);
 
   return (
     <div>
@@ -13,12 +26,22 @@ export default function Home() {
           Добро пожаловать в сервис бронирования столов ресторана
           <span className="text-rose-500 uppercase">"Atlant"</span>
         </h2>
-        <Link
-          href="/daybooking"
-          className="border-2 border-rose-500 px-[10px] py-[10px] rounded-lg bg-rose-500 text-white text-[20px] mt-[50px]"
-        >
-          Забронировать
-        </Link>
+        {isLogged && (
+          <Link
+            href="/daybooking"
+            className="border-2 border-rose-500 px-[10px] py-[10px] rounded-lg bg-rose-500 text-white text-[20px] mt-[50px]"
+          >
+            Забронировать
+          </Link>
+        )}
+        {!isLogged && (
+          <Link
+            href="/auth"
+            className="border-2 border-rose-500 px-[10px] py-[10px] rounded-lg bg-rose-500 text-white text-[20px] mt-[50px]"
+          >
+            Вход
+          </Link>
+        )}
         <button>Data</button>
       </div>
     </div>
