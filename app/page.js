@@ -1,16 +1,16 @@
 "use client";
 import React, { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
+import { use } from "react";
 
-export default async function Home() {
-  const [loadedData, setLoadedData] = useState(null);
+export default function Home() {
   console.log("render");
 
   return (
     <div>
       <div className="flex flex-col justify-center items-center text-center py-[100px]">
         <h2 className="font-serif text-[30px] text-bold">
-          Добро пожаловать в сервис бронирования столов ресторана{" "}
+          Добро пожаловать в сервис бронирования столов ресторана
           <span className="text-rose-500 uppercase">"Atlant"</span>
         </h2>
         <Link

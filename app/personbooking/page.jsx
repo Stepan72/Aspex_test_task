@@ -36,6 +36,7 @@ function PersonBooking() {
     // console.log(index);
     setActivePin(index);
   }
+
   return (
     <div className="flex flex-col justify-center items-center text-center py-[100px]">
       PersonBooking
