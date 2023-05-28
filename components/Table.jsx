@@ -17,7 +17,11 @@ function Table({ tableFor, qty, AllQty, index, activePin }) {
         <p className="text-rose-500 font-bold">
           Всего столов <span>{AllQty}</span>
         </p>
-        <p className="text-green-500 font-bold">
+        <p
+          className={`${
+            qty !== 0 ? "text-green-500" : "text-rose-500"
+          } font-bold`}
+        >
           Доступно столов <span>{qty}</span>
         </p>
       </div>

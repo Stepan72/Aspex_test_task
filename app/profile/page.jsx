@@ -12,6 +12,8 @@ function Profile() {
   const currentDateTime = new Date();
 
   function deleteHandler(el) {
+
+
     let newTime = el.time.split(":");
     const tableDateTime = new Date(
       el.year,
@@ -43,35 +45,47 @@ function Profile() {
 
   return (
     <div>
-      Profile
-      <div className="flex flex-col">
-        <div className="flex flex-row flex-wrap width-[600px]my-[100px] mx-[100px]">
+      <
+      <div className="w-[100%] h-[100%]">
+        <div className="flex flex-row flex-wrap my-[20px] mx-[20px] justify-center ">
           {bookedTables.map((el, index) => {
             return (
               <div
                 key={index}
-                className="width-[200px] height[20px] mx-[30px] my-[30px] text-center"
+                className="w-[300px] h-[300px] mx-[20px] my-[20px] text-center flex flex-col justify-center"
               >
-                <h3>Бронь стола №{index + 1}</h3>
-                <p>Для {el.tableFor} человек</p>
-                <p>
-                  Забронирован на {el.time} <br />
-                  {el.day}.
-                  {el.month.toString().length < 2 ? `0${el.month}` : el.month}.
-                  {el.year}
-                </p>
-                <button
-                  onClick={() => {
-                    deleteHandler(el);
-                  }}
-                >
-                  Удалить бронь
-                </button>
+                <img
+                  src={`assets/table-${Math.floor(Math.random() * 3).toFixed(
+                    0
+                  )}.jpg`}
+                  className="absolute z-[-1] w-[300px] h-[300px] object-cover rounded-[30px]"
+                  alt="booked_table"
+                />
+                <div className="flex flex-col justify-center mx-[40px] bg-zinc-100/70 rounded-[30px]">
+                  <h3>Бронь стола №{index + 1}</h3>
+                  <p>Для {el.tableFor} человек</p>
+                  <p>
+                    Забронирован на {el.time} <br />
+                    {el.day}.
+                    {el.month.toString().length < 2 ? `0${el.month}` : el.month}
+                    .{el.year}
+                  </p>
+                  <button
+                    className="bg-amber-300 rounded-[30px] mx-[30px] my-[10px] text-rose-500 text-extrabold "
+                    onClick={() => {
+                      deleteHandler(el);
+                    }}
+                  >
+                    Удалить бронь
+                  </button>
+                </div>
               </div>
             );
           })}
         </div>
-        {error && <p>{error}</p>}
+        {error && (
+          <p className="text-center text-rose-500 text-bold">{error}</p>
+        )}
       </div>
     </div>
   );

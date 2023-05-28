@@ -20,7 +20,6 @@ function PersonBooking() {
 
     if (availableTables[activePin].qty !== 0) {
       dispatch(cabinetActions.tableBookRedHandler(activePin));
-      console.log("success");
       router.replace("/success");
     } else {
       setError("Извините, но данные столы заняты! Выберите другой стол!");
@@ -68,11 +67,12 @@ function PersonBooking() {
           type="button"
           onClick={personPickHandler}
           className="next__button bg-amber-300"
+          disabled={activePin == undefined}
         >
           Сохранить
         </button>
       </div>
-      {error && <p className="mt-[20px]">{error}</p>}
+      {error && <p className="mt-[20px] text-red-500 font-bold">{error}</p>}
     </div>
   );
 }
