@@ -9,10 +9,14 @@ function Register() {
 
   async function registerHandler(data) {
     try {
-      const response = await fetch("http://localhost:3000/api/register", {
+      const response = await fetch("/api/register", {
         method: "POST",
         body: JSON.stringify(data),
       });
+      // const response = await fetch("http://localhost:3000/api/register", {
+      //   method: "POST",
+      //   body: JSON.stringify(data),
+      // });
       if (!response.ok) {
         toast.error("Ошибка регистрации!");
       }

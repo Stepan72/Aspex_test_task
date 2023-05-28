@@ -14,10 +14,14 @@ function Auth() {
 
   async function loginHandler(data) {
     try {
-      const response = await fetch("http://localhost:3000/api/login", {
+      const response = await fetch("/api/login", {
         method: "POST",
         body: JSON.stringify(data),
       });
+      // const response = await fetch("http://localhost:3000/api/login", {
+      //   method: "POST",
+      //   body: JSON.stringify(data),
+      // });
       if (!response.ok) {
         toast.error("Неверный логин или пароль!");
       }

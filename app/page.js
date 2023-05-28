@@ -13,7 +13,8 @@ export default function Home() {
   /// Получение свободных столов с API Routes Next JS
   useEffect(() => {
     async function getData() {
-      const response = await fetch("http://localhost:3000/api/tables");
+      const response = await fetch("/api/tables");
+      // const response = await fetch("http://localhost:3000/api/tables");
       // console.log(response);
       const data = await response.json();
       // console.log(data);
