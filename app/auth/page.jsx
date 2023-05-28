@@ -22,12 +22,12 @@ function Auth() {
         toast.error("Неверный логин или пароль!");
       }
       if (response.ok) {
-        console.log(response);
+        // console.log(response);
         const resData = await response.json();
-        console.log(resData);
+        // console.log(resData);
         toast.success("Успешный вход!");
         dispatch(cabinetActions.loginRedHandler());
-        console.log(isLogged);
+        // console.log(isLogged);
         router.push("/");
       }
     } catch (error) {

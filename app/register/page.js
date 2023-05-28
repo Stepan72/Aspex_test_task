@@ -17,9 +17,9 @@ function Register() {
         toast.error("Ошибка регистрации!");
       }
       if (response.ok) {
-        console.log(response);
+        // console.log(response);
         const resData = await response.json();
-        console.log(resData);
+        // console.log(resData);
         toast.success("Регистрация успешна!");
         router.push("/");
       }

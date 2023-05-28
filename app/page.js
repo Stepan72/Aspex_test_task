@@ -16,7 +16,7 @@ export default function Home() {
       const response = await fetch("http://localhost:3000/api/tables");
       // console.log(response);
       const data = await response.json();
-      console.log(data);
+      // console.log(data);
       dispatch(cabinetActions.loadInitialDataTables(data));
       dispatch(cabinetActions.startIsOverState());
     }
@@ -82,70 +82,3 @@ export default function Home() {
 //     </main>
 //   );
 // }
-
-// async function getData() {
-//   const res = await fetch("/api/prompt");
-//   // const res = await fetch("https://swapi.dev/api/people/1");
-
-//   // The return value is *not* serialized
-//   // You can return Date, Map, Set, etc.
-
-//   // Recommendation: handle errors
-//   if (!res.ok) {
-//     // This will activate the closest `error.js` Error Boundary
-//     throw new Error("Failed to fetch data");
-//   }
-
-//   return res.json();
-// }
-
-// export default async function Home() {
-//   const data = await getData();
-//   console.log(data);
-
-//   return <main>{data[0]}</main>;
-// }
-
-//////////////
-//////////////
-// async function getData() {
-//   const res = await fetch("http://localhost:3000/api/prompt");
-//   // const res = await fetch("https://swapi.dev/api/people/1");
-
-//   if (!res.ok) {
-//     throw new Error("Failed to fetch data");
-//   }
-//   return res.json();
-// }
-
-// export default async function Home() {
-//   const [loadedData, setLoadedData] = useState(null);
-//   console.log("render");
-/// Fetch
-// const data = await getData();
-// console.log(data);
-///
-
-/// SSR
-// const response = await fetch("http://localhost:3000/api/prompt");
-// // console.log(response);
-// const data = await response.json();
-// console.log(data);
-// console.log("check");
-///
-// const dispatch = useDispatch();
-// const starWarsData = useSelector((state) => {
-//   state.cabinet.starWarsData;
-// });
-
-// useEffect(() => {
-//   // const fetchData = async () => {
-//   //   const response = await fetch("http://localhost:3000/api/prompt");
-//   //   const data = await response.json();
-//   //   console.log(data);
-//   //   // setLoadedData(data);
-//   // };
-
-//   // fetchData();
-//   console.log("hello");
-// }, []);
