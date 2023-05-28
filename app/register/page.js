@@ -1,13 +1,31 @@
 "use client";
 import React from "react";
 import Form from "@/components/Form";
+import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 
 function Register() {
-  function registerHandler(data) {
-    console.log("register");
-    console.log(data);
-    /// происходит сохранение данных юзера
-    /// дальше либо авторизация, либо на страницу, что все успешно (не успешно) и авторизуйтесь
+  const router = useRouter();
+
+  async function registerHandler(data) {
+    try {
+      const response = await fetch("http://localhost:3000/api/register", {
+        method: "POST",
+        body: JSON.stringify(data),
+      });
+      if (!response.ok) {
+        toast.error("Ошибка регистрации!");
+      }
+      if (response.ok) {
+        console.log(response);
+        const resData = await response.json();
+        console.log(resData);
+        toast.success("Регистрация успешна!");
+        router.push("/");
+      }
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   return (

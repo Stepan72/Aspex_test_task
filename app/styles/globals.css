@@ -40,6 +40,20 @@
   .table__container {
     flex-direction: column;
   }
+
+  .success_table_mobile {
+    width: 300;
+    height: 250;
+  }
+  .success_table_mobile h2 {
+    font-size: 24px;
+  }
+
+  .modal_mobile {
+    top: 50%;
+    left: 5%;
+    width: 350px;
+  }
 }
 
 /* ////////// start ////////// */

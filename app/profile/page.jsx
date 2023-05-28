@@ -118,8 +118,8 @@ function Profile() {
       {bookedTables.length === 0 && (
         <div className="flex flex-col items-center">
           <p className="text-center">
-            Бронирований не найдено! <br /> Перейдите в раздел бронирования
-            чтобы создать новую бронь!{" "}
+            Бронирований не найдено <br /> Перейдите в раздел бронирования чтобы
+            создать новую бронь
           </p>
 
           <Link

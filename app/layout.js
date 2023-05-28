@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar";
 import "./styles/globals.css";
 import ProviderWrap from "./../store/ProviderWrap";
 import LoginWrapper from "@/components/LoginWrapper";
+import { Toaster } from "react-hot-toast";
 
 export const metadata = {
   title: "ResBooking",
@@ -18,6 +19,7 @@ export default function RootLayout({ children }) {
         <ProviderWrap>
           <LoginWrapper>
             <Navbar />
+            <Toaster />
             <main>{children} </main>
           </LoginWrapper>
         </ProviderWrap>

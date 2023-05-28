@@ -1,28 +1,40 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import Form from "@/components/Form";
 import { useSelector, useDispatch } from "react-redux";
 import { cabinetActions } from "@/store/cabinet-slice";
 import { useRouter } from "next/navigation";
 useRouter;
+import toast from "react-hot-toast";
 
 function Auth() {
   const router = useRouter();
   const dispatch = useDispatch();
   const isLogged = useSelector((state) => state.cabinet.isLogged);
 
-  function loginHandler(data) {
-    /// сверка данных введенного юзера и базы
-    /// если все ок - переход на главную, нет - ошибка юзера и переотправка на повторный логин
-
-    /// когда ок - переход на главную
-    dispatch(cabinetActions.loginRedHandler());
-    console.log(isLogged);
-    console.log(data);
-    router.push("/");
+  async function loginHandler(data) {
+    try {
+      const response = await fetch("http://localhost:3000/api/login", {
+        method: "POST",
+        body: JSON.stringify(data),
+      });
+      if (!response.ok) {
+        toast.error("Неверный логин или пароль!");
+      }
+      if (response.ok) {
+        console.log(response);
+        const resData = await response.json();
+        console.log(resData);
+        toast.success("Успешный вход!");
+        dispatch(cabinetActions.loginRedHandler());
+        console.log(isLogged);
+        router.push("/");
+      }
+    } catch (error) {
+      console.log(error);
+    }
   }
 
-  console.log(isLogged);
   return (
     <div className="flex flex-col justify-center items-center text-center">
       <Form
