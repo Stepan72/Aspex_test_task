@@ -36,6 +36,12 @@
   color: white;
 }
 
+@media screen and (max-width: 1000px) {
+  .table__container {
+    flex-direction: column;
+  }
+}
+
 /* ////////// start ////////// */
 /* :root {
   --foreground-rgb: 0, 0, 0;

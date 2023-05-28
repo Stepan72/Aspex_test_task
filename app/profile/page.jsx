@@ -7,6 +7,7 @@ import Backdrop from "@/components/Backdrop";
 import Modal from "@/components/Modal";
 import { motion } from "framer-motion";
 import { fadeIn } from "@/utils/motion";
+import Link from "next/link";
 
 function Profile() {
   const [deleteState, setDeleteState] = useState(null);
@@ -28,7 +29,7 @@ function Profile() {
       newTime[1]
     );
 
-    console.log(tableDateTime - currentDateTime);
+    // console.log(tableDateTime - currentDateTime);
     if (
       tableDateTime - currentDateTime < 3600000 &&
       tableDateTime - currentDateTime > 0
@@ -114,6 +115,21 @@ function Profile() {
           })}
         </div>
       </div>
+      {bookedTables.length === 0 && (
+        <div className="flex flex-col items-center">
+          <p className="text-center">
+            Бронирований не найдено! <br /> Перейдите в раздел бронирования
+            чтобы создать новую бронь!{" "}
+          </p>
+
+          <Link
+            href="/daybooking"
+            className="border-2 border-white-500 px-[10px] py-[10px] rounded-lg bg-amber-300 text-white text-[20px] mt-[50px] w-[180px] text-center"
+          >
+            Забронировать
+          </Link>
+        </div>
+      )}
     </div>
   );
 }

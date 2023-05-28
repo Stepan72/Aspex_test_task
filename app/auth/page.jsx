@@ -11,13 +11,14 @@ function Auth() {
   const dispatch = useDispatch();
   const isLogged = useSelector((state) => state.cabinet.isLogged);
 
-  function loginHandler() {
+  function loginHandler(data) {
     /// сверка данных введенного юзера и базы
     /// если все ок - переход на главную, нет - ошибка юзера и переотправка на повторный логин
 
     /// когда ок - переход на главную
     dispatch(cabinetActions.loginRedHandler());
     console.log(isLogged);
+    console.log(data);
     router.push("/");
   }
 

@@ -3,8 +3,9 @@ import React from "react";
 import Form from "@/components/Form";
 
 function Register() {
-  function registerHandler() {
+  function registerHandler(data) {
     console.log("register");
+    console.log(data);
     /// происходит сохранение данных юзера
     /// дальше либо авторизация, либо на страницу, что все успешно (не успешно) и авторизуйтесь
   }

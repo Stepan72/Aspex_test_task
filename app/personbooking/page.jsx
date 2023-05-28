@@ -39,7 +39,7 @@ function PersonBooking() {
       <h2 className="text-[30px] mb-[30px]">
         Выберете стол на нужное количество персон
       </h2>
-      <div className="flex flex-row gap-[30px]">
+      <div className="flex flex-row gap-[30px] table__container">
         {availableTables.map((el, index) => {
           return (
             <button
