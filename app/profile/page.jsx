@@ -5,6 +5,8 @@ import { cabinetActions } from "@/store/cabinet-slice";
 import { useRouter } from "next/navigation";
 import Backdrop from "@/components/Backdrop";
 import Modal from "@/components/Modal";
+import { motion } from "framer-motion";
+import { fadeIn } from "@/utils/motion";
 
 function Profile() {
   const [deleteState, setDeleteState] = useState(null);
@@ -77,9 +79,12 @@ function Profile() {
         <div className="flex flex-row flex-wrap my-[20px] mx-[20px] justify-center ">
           {bookedTables.map((el, index) => {
             return (
-              <div
+              <motion.div
                 key={index}
                 className="w-[300px] h-[300px] mx-[20px] my-[20px] text-center flex flex-col justify-center"
+                variants={fadeIn("up", "tween", 0.1, 0.4)}
+                initial="hidden"
+                whileInView="show"
               >
                 <img
                   src={`assets/profile-table.jpg`}
@@ -104,7 +109,7 @@ function Profile() {
                     Удалить бронь
                   </button>
                 </div>
-              </div>
+              </motion.div>
             );
           })}
         </div>
