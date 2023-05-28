@@ -31,7 +31,7 @@ function Profile() {
       );
     } else {
       // console.log("Вы удалили бронь!");
-      dispatch(cabinetActions.deleteTableFun(el.id));
+      dispatch(cabinetActions.deleteTableBookRedHandler(el.id));
     }
 
     setTimeout(() => {

@@ -16,7 +16,7 @@ function Auth() {
     /// если все ок - переход на главную, нет - ошибка юзера и переотправка на повторный логин
 
     /// когда ок - переход на главную
-    dispatch(cabinetActions.loginFun());
+    dispatch(cabinetActions.loginRedHandler());
     console.log(isLogged);
     router.push("/");
   }

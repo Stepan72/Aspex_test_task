@@ -17,18 +17,18 @@ const cabinetSlice = createSlice({
     bookedTables: [],
   },
   reducers: {
-    loginFun(state) {
+    loginRedHandler(state) {
       state.isLogged = true;
     },
-    dateFun(state, action) {
+    dateSaveRedHandler(state, action) {
       state.date.day = action.payload.day;
       state.date.month = action.payload.month;
       state.date.year = action.payload.year;
     },
-    timeFun(state, action) {
+    timeSaveRedHandler(state, action) {
       state.time = action.payload;
     },
-    tableFun(state, action) {
+    tableBookRedHandler(state, action) {
       let index = action.payload;
       let selectedTable = state.availableTables[index];
       if (selectedTable.qty === 0) {
@@ -54,7 +54,7 @@ const cabinetSlice = createSlice({
         state.time = null;
       }
     },
-    deleteTableFun(state, action) {
+    deleteTableBookRedHandler(state, action) {
       const deleteId = action.payload;
       const deleteTable = state.bookedTables.find((el) => {
         return el.id === deleteId;
@@ -70,11 +70,11 @@ const cabinetSlice = createSlice({
       restoreTable = { ...restoreTable, qty: restoreTable.qty + 1 };
       state.availableTables[deleteTableIndex] = restoreTable;
     },
-    loadDataTables(state, action) {
+    loadInitialDataTables(state, action) {
       state.availableTables = action.payload.availableTables;
       state.allTables = action.payload.allTables;
     },
-    startIsOver(state) {
+    startIsOverState(state) {
       state.start = true;
     },
   },

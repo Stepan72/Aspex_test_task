@@ -17,8 +17,8 @@ export default function Home() {
       // console.log(response);
       const data = await response.json();
       console.log(data);
-      dispatch(cabinetActions.loadDataTables(data));
-      dispatch(cabinetActions.startIsOver());
+      dispatch(cabinetActions.loadInitialDataTables(data));
+      dispatch(cabinetActions.startIsOverState());
     }
     if (!start) {
       getData();
@@ -28,14 +28,13 @@ export default function Home() {
   return (
     <div>
       <div className="flex flex-col justify-center items-center text-center py-[100px]">
-        <h2 className="font-serif text-[30px] text-bold">
-          Добро пожаловать в сервис бронирования столов ресторана
-          <span className="text-rose-500 uppercase">"Atlant"</span>
+        <h2 className="text-[30px] text-bold home__title ">
+          Добро пожаловать в сервис бронирования столов
         </h2>
         {isLogged && (
           <Link
             href="/daybooking"
-            className="border-2 border-rose-500 px-[10px] py-[10px] rounded-lg bg-rose-500 text-white text-[20px] mt-[50px]"
+            className="border-2 border-white-500 px-[10px] py-[10px] rounded-lg bg-amber-300 text-white text-[20px] mt-[50px]"
           >
             Забронировать
           </Link>
@@ -43,7 +42,7 @@ export default function Home() {
         {!isLogged && (
           <Link
             href="/auth"
-            className="border-2 border-rose-500 px-[10px] py-[10px] rounded-lg bg-rose-500 text-white text-[20px] mt-[50px]"
+            className="border-2 border-white-500 px-[10px] py-[10px] rounded-lg bg-amber-300 text-white text-[20px] mt-[50px]"
           >
             Вход
           </Link>

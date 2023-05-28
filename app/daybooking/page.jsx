@@ -22,7 +22,7 @@ function DayBooking() {
     // console.log(value.getMonth());
 
     dispatch(
-      cabinetActions.dateFun({
+      cabinetActions.dateSaveRedHandler({
         day: value.getDate(),
         month: value.getMonth(),
         year: value.getFullYear(),
@@ -45,7 +45,7 @@ function DayBooking() {
         </Link>
         <button
           type="button"
-          className="next__button"
+          className="next__button bg-amber-300"
           onClick={datePickHandler}
         >
           Далее

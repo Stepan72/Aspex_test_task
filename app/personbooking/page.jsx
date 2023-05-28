@@ -19,11 +19,11 @@ function PersonBooking() {
     // console.log(availableTables[activePin]);
 
     if (availableTables[activePin].qty !== 0) {
-      dispatch(cabinetActions.tableFun(activePin));
+      dispatch(cabinetActions.tableBookRedHandler(activePin));
       console.log("success");
       router.replace("/success");
     } else {
-      setError("No available tables left!");
+      setError("Извините, но данные столы заняты! Выберите другой стол!");
       setTimeout(() => {
         setError(null);
       }, 2000);
@@ -37,8 +37,10 @@ function PersonBooking() {
 
   return (
     <div className="flex flex-col justify-center items-center text-center py-[100px]">
-      PersonBooking
-      <div className="flex flex-row gap-[50px]">
+      <h2 className="text-[30px] mb-[30px]">
+        Выберете стол на нужное количество персон
+      </h2>
+      <div className="flex flex-row gap-[30px]">
         {availableTables.map((el, index) => {
           return (
             <button
@@ -46,40 +48,33 @@ function PersonBooking() {
                 pinHandler(index);
               }}
               key={index}
-              className="flex width-[250px] height-[250px] mt-[10px]"
             >
               <Table
                 tableFor={el.tableFor}
                 AllQty={allTables[index].qty}
                 qty={el.qty}
+                index={index}
+                activePin={activePin}
               />
             </button>
           );
         })}
       </div>
-      <div className="mt-[10px]">
-        <Link href="/timebooking">Previous</Link>
-        <button type="button" onClick={personPickHandler}>
-          Save
+      <div className="mt-[50px] flex gap-[30px] ">
+        <Link href="/timebooking" className="cancel__button">
+          Назад
+        </Link>
+        <button
+          type="button"
+          onClick={personPickHandler}
+          className="next__button bg-amber-300"
+        >
+          Сохранить
         </button>
       </div>
-      {error && <p>{error}</p>}
+      {error && <p className="mt-[20px]">{error}</p>}
     </div>
   );
 }
 
 export default PersonBooking;
-
-///////////////
-// useEffect(() => {
-//   async function getData() {
-//     console.log("person render");
-//     const response = await fetch("http://localhost:3000/api/prompt");
-//     const data = await response.json();
-//     dispatch(cabinetActions.loadDataTables(data));
-//     dispatch(cabinetActions.startIsOver());
-//   }
-//   if (!start) {
-//     getData();
-//   }
-// }, []);

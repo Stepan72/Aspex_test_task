@@ -1,12 +1,21 @@
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --main-font: "Playfair Display", serif;
+  --main-font: "Roboto", serif;
   --secondary-font: "Plus Jakarta Sans", sans-serif;
+}
+
+.nav__bar {
+  font-family: var(--main-font);
+}
+
+.home__title {
+  font-family: var(--main-font);
 }
 
 .cancel__button {
@@ -14,16 +23,16 @@
   border: 1px solid rgb(226, 219, 219);
   border-radius: 20px;
   padding: 5px;
-  width: 80px;
+  width: 100px;
   color: white;
 }
 
 .next__button {
-  background-color: rgb(219, 179, 77);
+  /* background-color: #f59e0b; */
   border: 1px solid rgb(226, 219, 219);
   border-radius: 20px;
   padding: 5px;
-  width: 80px;
+  width: 100px;
   color: white;
 }
 
