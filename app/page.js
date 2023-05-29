@@ -14,7 +14,6 @@ export default function Home() {
   useEffect(() => {
     async function getData() {
       const response = await fetch("/api/tables");
-      // const response = await fetch("http://localhost:3000/api/tables");
       // console.log(response);
       const data = await response.json();
       // console.log(data);
